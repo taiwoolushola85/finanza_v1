@@ -1,0 +1,30 @@
+[
+    {
+        "id": 367,
+        "Loan_Account_No": "20020441",
+        "Firstname": "Kemi",
+        "Lastname": "A",
+        "Middlename": "Blessing",
+        "Product": "YOUNIQ KASH",
+        "Branch": "Ikeja",
+        "Phone": "0902878922",
+        "Total_Loan": "200000",
+        "Paid": "0",
+        "Expected_Amount": "10000",
+        "Date_Disbursed": "2026-02-03",
+        "Maturity_Date": "2026-02-27",
+        "Officer_Name": "John Smith",
+        "Status": "Active",
+        "Total_Bal": "200000",
+        "Duration": "20",
+        "Frequency": "Daily",
+        "Disbursement_No": "10010441",
+        "Repayment_Day": "Daily",
+        "Missed_Repayments": 3,
+        "Expected_Due_Amount": 30000,
+        "Next_Payment_Date": "2026-02-06",
+        "Repayment_Status": "Behind",
+        "Status_Color": "#ff9800",
+        "Repayment_Percent": 0
+    }
+]

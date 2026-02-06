@@ -22,7 +22,7 @@
 <div class="col-10 col-xl-4 offset-xl-7 offset-1">
 <div class="card">
 <div class="card-body ">
-<h3 class="text-center">FINANZA</h3>
+<h3 class="text-center"><b>FINANZA</b></h3>
 <p class="text-center">Digital Loan Tracking Management System</p>
 <div class="alert alert-info alert-dismissible fade show" role="alert" id="up" style="display:none">
 <center><i class="fa fa-exclamation-circle"></i> Please enter username & password</center>

@@ -49,6 +49,46 @@ Loan Auditing <input type="checkbox" name="na[]" value="Loan_Auditing">
 </div>
 </div>
 <br>
+<br>
+<span><i style="color:red">*</i> <b>BANK</b> <input type="checkbox" name="ta[]" value="BANK" style="margin-left:20px" id="tab"></span><br>
+<div class="row" style="margin-left:1px;">
+<div class="col-md-3" style="margin-top:12px">
+<div class="card">
+<div class="card-body">
+Bank List <input type="checkbox" name="na[]" value="Bank_List">
+</div>
+</div>
+</div>
+<div class="col-md-3" style="margin-top:12px">
+<div class="card">
+<div class="card-body">
+Inward Transaction <input type="checkbox" name="na[]" value="Inward_Transaction">
+</div>
+</div>
+</div>
+<div class="col-md-3" style="margin-top:12px">
+<div class="card">
+<div class="card-body">
+Outward Transaction <input type="checkbox" name="na[]" value="Outward_Transaction">
+</div>
+</div>
+</div>
+<div class="col-md-3" style="margin-top:12px">
+<div class="card">
+<div class="card-body">
+Transaction Query <input type="checkbox" name="na[]" value="Transaction_Query">
+</div>
+</div>
+</div>
+<div class="col-md-3" style="margin-top:12px">
+<div class="card">
+<div class="card-body">
+Virtual Account <input type="checkbox" name="na[]" value="Virtual_Account">
+</div>
+</div>
+</div>
+</div>
+<br>
 <span><i style="color:red">*</i> <b>CRMS</b> <input type="checkbox" name="ta[]" value="CRMS" style="margin-left:20px" id="tab"></span><br>
 <div class="row" style="margin-left:1px;">
 <div class="col-md-3" style="margin-top:12px">
@@ -669,14 +709,14 @@ Report List <input type="checkbox" name="na[]" value="Report_List">
 <div class="col-md-3" style="margin-top:12px">
 <div class="card">
 <div class="card-body">
-Pre Registration <input type="checkbox" name="na[]" value="Pre_Registration">
+New Registration <input type="checkbox" name="na[]" value="New_Registration">
 </div>
 </div>
 </div>
 <div class="col-md-3" style="margin-top:12px">
 <div class="card">
 <div class="card-body">
-Create Loan <input type="checkbox" name="na[]" value="Create_Loan">
+Existing Registration<input type="checkbox" name="na[]" value="Existing_Registration">
 </div>
 </div>
 </div>
