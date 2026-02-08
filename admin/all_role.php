@@ -210,6 +210,13 @@ Report List <input type="checkbox" name="na[]" value="Report_List">
 </div>
 </div>
 </div>
+<div class="col-md-3" style="margin-top:12px">
+<div class="card">
+<div class="card-body">
+Financial Report <input type="checkbox" name="na[]" value="Financial_Report">
+</div>
+</div>
+</div>
 </div>
 <br>
 <span><i style="color:red">*</i> <b>MAPPING</b> <input type="checkbox" name="ta[]" value="MAPPING" style="margin-left:20px" id="tab"></span><br>

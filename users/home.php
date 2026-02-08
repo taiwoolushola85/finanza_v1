@@ -14,17 +14,13 @@ include_once 'Analyst_Dashboard.php';
 // team leader daashboard
 include_once 'team_lead_dashboard.php';
 
-}elseif ( $ct == 'Branch Operations' && $gr == 'Central Operations'){
-// team leader daashboard
-include_once 'Branch_Dashboard.php';
-
 }elseif ( $ct == 'Field Operations' && $gr == 'Recovery'){
 //Recovery dashboard
 include_once 'Recovery_Dashboard.php';
 
 }elseif ( $ct == 'Branch Operations' && $gr == 'Head Of Recovery'){
 //Recovery dashboard
-include_once 'Head_Recovery_Dashboard.php';
+include_once 'head_of_recovery_dashboard.php';
 }else{
 // general dashboard
 include_once 'General_Dashboard.php';

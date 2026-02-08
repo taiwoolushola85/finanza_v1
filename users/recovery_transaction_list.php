@@ -217,7 +217,7 @@ WRN_PROFILE_DELETE = "Are you sure you want to approve this transactions.?";
 var checked = confirm(WRN_PROFILE_DELETE);
 if(checked == true) {
 $("#updateModal").modal('hide');
-$("#please").show();
+$("#please").modal('show');
 var ids = [];
 $(".emp_checkbox").each(function () {
 if ($(this).is(":checked")) {
@@ -233,16 +233,11 @@ url: "recovery_repayment_approval.php",
 data: {id: ids},
 success:function (data) {
 setTimeout(function(){
-$("#please").hide();
-$("#toast").css("display", "block");
-$("#toast").show();
-}, 3000);
-setTimeout(function(){
-$("#please").hide();
-$("#toast").hide();
+$("#please").modal('hide');
 loads();
 load();
-}, 6000);
+ToastNotification.success('Posting Approved Successfully');
+}, 3000);
 }
 });
 } else {
@@ -280,7 +275,6 @@ load();
 }
 });
 } else {
-$("#dece").hide();
 $("#updateModal").modal('show');
 alert("Please mark transaction to decline.");
 }

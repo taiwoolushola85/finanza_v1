@@ -41,8 +41,8 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Origin: *");
 include '../config/db.php';
 $d = date('Y-m-d');
-$result = mysqli_query($con, "SELECT id, Reg_id, Firstname, Middlename, Lastname, Unions, Loan_Account_No, Savings_Account_No, Product, Balance, Status, Date_Opend
-FROM savings WHERE User = '$User' AND Status = 'Active' ORDER BY Firstname ASC ") or die("Bad Query.");
+$result = mysqli_query($con, "SELECT id, Reg_id, Firstname, Middlename, Lastname, Unions, Loan_Account_No, Savings_Account_No, Product, Balance,
+Status, Date_Opend FROM savings WHERE User = '$User' AND Status = 'Active' ORDER BY Firstname ASC ") or die("Bad Query.");
 
 
 mysqli_close($con);

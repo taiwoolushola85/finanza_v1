@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../config/db.php';
-$pass = $_POST['pass'] ?? '';
+$pass = $_POST['ps'] ?? '';
 $id = $_POST['id'] ?? '';
 $us = $_POST['us'] ?? '';
 $bck = $_POST['bck'] ?? '';

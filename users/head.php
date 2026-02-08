@@ -559,6 +559,22 @@ $name = $mrows['Name'];
 <br>
 
 
+<div class="modal" id="view" tabindex="-1" aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-dialog-centered modal-sm" style="display:none; width:250px; display: flex !important; align-items: center; justify-content: center;">
+<div class="modal-content">
+<div class="modal-body">
+<center>
+<i>
+<img src="../loader/loader.gif" style="height:20px"> Please wait...
+</i>
+</center>
+</div>
+</div>
+</div>
+</div>
+
+
+
 <div class="modal" id="loader" tabindex="-1" aria-hidden="true" style="display: none;">
 <div class="modal-dialog modal-dialog-centered modal-sm" style="display:none; width:250px; display: flex !important; align-items: center; justify-content: center;">
 <div class="modal-content">

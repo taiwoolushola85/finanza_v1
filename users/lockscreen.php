@@ -1,27 +1,274 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php 
+//find session
+session_start();
+?>
+<!doctype html>
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
-<title>Finanza Lockscreen </title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<meta name="description" content="Loan management system for all kinds of loans - personal, business, and more. Streamline your lending process with our user-friendly platform.">
-<meta name="keywords" content="loan management system, loan processing, lending platform, personal loans, business loans">
-<meta name="author" content="I-Create Software Technology">
-<!-- layout setup -->
-<!-- <script type="module" src="assets/js/layout-setup.js"></script> -->
-<!-- App favicon -->
-<link rel="shortcut icon" href="../assets/images/logo-sm.png">
-<!-- Simplebar Css -->
-<link rel="stylesheet" href="../assets/libs/simplebar/simplebar.min.css">
-<!-- Bootstrap Css -->
-<link href="../assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
-<!--icons css-->
-<link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css">
-<!-- App Css-->
-<link href="../assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title data-rightjoin="">FINANZA || LOCKSCEEN</title>
+<meta name="description" content="Digital Loan Tracking Management System">
+<!-- Google Font Api KEY-->
+<meta name="google_font_api" content="AIzaSyBG58yNdAjc20_8jAvLNSVi9E4Xhwjau_k">
+<!-- Config Options -->
+<meta name="setting_options" content='{&quot;saveLocal&quot;:&quot;sessionStorage&quot;,&quot;storeKey&quot;:&quot;huisetting-html&quot;,&quot;setting&quot;:{&quot;app_name&quot;:{&quot;value&quot;:&quot;Hope UI&quot;},&quot;theme_scheme_direction&quot;:{&quot;value&quot;:&quot;ltr&quot;},&quot;theme_scheme&quot;:{&quot;value&quot;:&quot;light&quot;},&quot;theme_style_appearance&quot;:{&quot;value&quot;:[&quot;theme-default&quot;]},&quot;theme_color&quot;:{&quot;colors&quot;:{&quot;--{{prefix}}primary&quot;:&quot;#3a57e8&quot;,&quot;--{{prefix}}info&quot;:&quot;#08B1BA&quot;},&quot;value&quot;:&quot;theme-color-default&quot;},&quot;theme_transition&quot;:{&quot;value&quot;:&quot;theme-with-animation&quot;},&quot;theme_font_size&quot;:{&quot;value&quot;:&quot;theme-fs-md&quot;},&quot;page_layout&quot;:{&quot;value&quot;:&quot;container-fluid&quot;},&quot;header_navbar&quot;:{&quot;value&quot;:&quot;default&quot;},&quot;header_banner&quot;:{&quot;value&quot;:&quot;default&quot;},&quot;sidebar_color&quot;:{&quot;value&quot;:&quot;sidebar-white&quot;},&quot;card_color&quot;:{&quot;value&quot;:&quot;card-default&quot;},&quot;sidebar_type&quot;:{&quot;value&quot;:[]},&quot;sidebar_menu_style&quot;:{&quot;value&quot;:&quot;left-bordered&quot;},&quot;footer&quot;:{&quot;value&quot;:&quot;default&quot;},&quot;body_font_family&quot;:{&quot;value&quot;:null},&quot;heading_font_family&quot;:{&quot;value&quot;:null}}}'>
+<!-- Favicon -->
+<link rel="shortcut icon" href="../assets/images/favicon.ico">
+<!-- Library / Plugin Css Build -->
+<link rel="stylesheet" href="../assets/css/core/libs.min.css">
+<!-- Hope Ui Design System Css -->
+<link rel="stylesheet" href="../assets/css/hope-ui.min.css?v=2.2.0">
+<link rel="stylesheet" href="../assets/css/pro.min.css?v=2.2.0">
+<!-- Custom Css -->
+<link rel="stylesheet" href="../assets/css/custom.min.css?v=2.2.0">
+<!-- Dark Css -->
+<link rel="stylesheet" href="../assets/css/dark.min.css?v=2.2.0">
+<!-- Customizer Css -->
+<link rel="stylesheet" href="../assets/css/customizer.min.css?v=2.2.0">
+<!-- RTL Css -->
+<link rel="stylesheet" href="../assets/css/rtl.min.css?v=2.2.0">
 <script src="../js/jquery-2.2.0.min.js"></script>
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="">
+
+<style>
+/* Toast Container */
+.toast-container {
+    pointer-events: none;
+}
+
+.toast-container .toast {
+    pointer-events: auto;
+}
+
+/* Custom Toast Styles */
+.custom-toast {
+    min-width: 320px;
+    max-width: 400px;
+    border: none;
+    border-left: 4px solid #28a745;
+    border-radius: 0.375rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.custom-toast .toast-header {
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 0.75rem 1rem;
+    align-items: center;
+}
+
+.custom-toast .toast-body {
+    padding: 1rem;
+    font-size: 0.9375rem;
+    color: #212529;
+    word-wrap: break-word;
+}
+
+.toast-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+/* Toast Variants */
+.toast-success {
+    border-left-color: #28a745;
+}
+.toast-success .toast-icon {
+    color: #28a745;
+}
+
+.toast-error {
+    border-left-color: #dc3545;
+}
+.toast-error .toast-icon {
+    color: #dc3545;
+}
+
+.toast-warning {
+    border-left-color: #ffc107;
+}
+.toast-warning .toast-icon {
+    color: #ffc107;
+}
+
+.toast-info {
+    border-left-color: #17a2b8;
+}
+.toast-info .toast-icon {
+    color: #17a2b8;
+}
+
+/* Animations */
+.custom-toast.showing {
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+.custom-toast.hide {
+    animation: slideOut 0.3s ease-in forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .toast-container {
+        left: 0;
+        right: 0;
+        padding: 0.75rem;
+    }
+    
+    .custom-toast {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+</style>
+
+<script>
+// Stable Toast Notification System
+const ToastNotification = {
+    // Configuration
+    config: {
+        defaultDuration: 3000,
+        icons: {
+            'success': 'fa fa-check-circle',
+            'error': 'fa fa-times-circle',
+            'warning': 'fa fa-exclamation-triangle',
+            'info': 'fa fa-info-circle'
+        }
+    },
+
+    // Current toast instance
+    currentToast: null,
+
+    // Show toast notification
+    show: function(message, type = 'success', duration = null) {
+        // Validate inputs
+        if (!message || typeof message !== 'string') {
+            console.error('Toast message must be a valid string');
+            return;
+        }
+
+        // Get toast element
+        const toastElement = document.getElementById('toast');
+        if (!toastElement) {
+            console.error('Toast element not found');
+            return;
+        }
+
+        // Hide current toast if exists
+        if (this.currentToast) {
+            this.currentToast.hide();
+        }
+
+        // Reset classes
+        toastElement.classList.remove('toast-success', 'toast-error', 'toast-warning', 'toast-info');
+
+        // Get elements
+        const toastBody = toastElement.querySelector('.toast-body');
+        const toastIcon = toastElement.querySelector('.toast-icon');
+        const toastTime = toastElement.querySelector('.toast-time');
+
+        // Validate type
+        const validTypes = ['success', 'error', 'warning', 'info'];
+        if (!validTypes.includes(type)) {
+            type = 'success';
+        }
+
+        // Set content
+        if (toastBody) {
+            toastBody.textContent = message;
+        }
+
+        // Set icon
+        if (toastIcon) {
+            toastIcon.className = 'toast-icon me-2 ' + this.config.icons[type];
+        }
+
+        // Set timestamp
+        if (toastTime) {
+            toastTime.textContent = 'just now';
+        }
+
+        // Add type class
+        toastElement.classList.add('toast-' + type);
+
+        // Create Bootstrap toast instance
+        const bsToast = new bootstrap.Toast(toastElement, {
+            autohide: true,
+            delay: duration || this.config.defaultDuration
+        });
+
+        // Store current instance
+        this.currentToast = bsToast;
+
+        // Show toast
+        bsToast.show();
+
+        // Clean up on hide
+        toastElement.addEventListener('hidden.bs.toast', () => {
+            this.currentToast = null;
+        }, { once: true });
+
+        return bsToast;
+    },
+
+    // Shorthand methods
+    success: function(message, duration) {
+        return this.show(message, 'success', duration);
+    },
+
+    error: function(message, duration) {
+        return this.show(message, 'error', duration);
+    },
+
+    warning: function(message, duration) {
+        return this.show(message, 'warning', duration);
+    },
+
+    info: function(message, duration) {
+        return this.show(message, 'info', duration);
+    }
+};
+
+// Legacy function for backwards compatibility
+function showToast(message, type = 'success', duration) {
+    return ToastNotification.show(message, type, duration);
+}
+</script>
+
+
+
+<!-- loader Start -->
+<div style="display: none;">
 <?php
 include '../config/db.php';
 $user = $_GET['id'];
@@ -29,163 +276,101 @@ $bck = $_GET['resume'];// resume
 $Query = "SELECT * FROM users WHERE Username='$user'";
 $result = mysqli_query($con, $Query);
 $row = mysqli_fetch_array($result);
+$id = $row['id'];
+$User = $row['Username'];
+$loc = $row['Location'];
+$na = $row['Name'];
 ?>
-<div class="position-relative min-vh-100">
-<div class="row gx-0">
-<div class="col-xl-5">
-<div class="row justify-content-center align-items-center p-10 min-vh-100 bg-body-secondary position-relative">
-<div class="col-md-7 col-lg-6 col-xl-8 col-xxl-7">
-<a href="#!" class="text-nowrap d-block w-100">
-<h4><img src="../assets/images/logo-sm.png" class="dark-logo" height="30" alt="Logo-Dark"><b> FINANZA</b></h4>
+</div>
+<!-- loader END -->
+<div class="wrapper">
+<section class="login-content">
+<div class="row m-0 align-items-center bg-white vh-100">
+<div class="col-md-6 p-0">
+<div class="card card-transparent auth-card shadow-none d-flex justify-content-center mb-0">
+<div class="card-body">
+<a href="#" class="navbar-brand d-flex align-items-center mb-3">
+<!--Logo start-->
+<div class="logo-main">
+<div class="logo-normal">
+<svg class="text-primary icon-30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="-0.757324" y="19.2427" width="28" height="4" rx="2" transform="rotate(-45 -0.757324 19.2427)" fill="currentColor"></rect>
+<rect x="7.72803" y="27.728" width="28" height="4" rx="2" transform="rotate(-45 7.72803 27.728)" fill="currentColor"></rect>
+<rect x="10.5366" y="16.3945" width="16" height="4" rx="2" transform="rotate(45 10.5366 16.3945)" fill="currentColor"></rect>
+<rect x="10.5562" y="-0.556152" width="28" height="4" rx="2" transform="rotate(45 10.5562 -0.556152)" fill="currentColor"></rect>
+</svg>
+</div>
+<div class="logo-mini">
+<svg class="text-primary icon-30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="-0.757324" y="19.2427" width="28" height="4" rx="2" transform="rotate(-45 -0.757324 19.2427)" fill="currentColor"></rect>
+<rect x="7.72803" y="27.728" width="28" height="4" rx="2" transform="rotate(-45 7.72803 27.728)" fill="currentColor"></rect>
+<rect x="10.5366" y="16.3945" width="16" height="4" rx="2" transform="rotate(45 10.5366 16.3945)" fill="currentColor"></rect>
+<rect x="10.5562" y="-0.556152" width="28" height="4" rx="2" transform="rotate(45 10.5562 -0.556152)" fill="currentColor"></rect>
+</svg>
+</div>
+</div>
+<!--logo End-->                           
+<h4 class="logo-title ms-3 mb-0">FINANZA</h4>
 </a>
-<br>
-<center>
-<img src="<?php echo $row['Location']; ?>" style="height:50px; width:50px; border-radius:10px"  class="img-fluid"><br><br>
-<span style="margin-top:20px">
-<h5 class="my-0 fw-semibold"><?php echo $row['Name']; ?></h5>
-</span>
-</center>
-<h3 class="mb-3 mt-8">Lockscreen</h3>
-<p class="text-muted mb-8">Enter your password to restore ypur session</p>
+<?php
+$img = $loc ?? '';
+$defaultImage = '../assets/no-image.png';
+if (!empty($img)) {
+// Check if path starts with ../
+if (strpos($img, '../') === 0) {
+$imgPath = $img;
+} else {
+$imgPath = '../' . $img;
+}
+} else {
+$imgPath = $defaultImage;
+}
+?>
+<img src="<?php echo $imgPath; ?>" class="rounded avatar-80 mb-3" alt="" onerror="this.src='../assets/no-image.png';">
+<h2 class="mb-2">Hi ! <?php echo $na;?></h2>
+<p>Enter your password to restore session</p>
+<form action="" method="post" enctype="multipart/form-data" id="uploadForm">
+<div class="row">
+<div class="col-lg-12">
 <div class="alert alert-warning alert-dismissible fade show" role="alert" id="yp" style="display:none">
 <center><i class="fa fa-exclamation-circle"></i> Please enter your password</center>
 </div>
 <div class="alert alert-danger alert-dismissible fade show" role="alert" id="nf" style="display:none">
 <center><i class="fa fa-exclamation-circle"></i> Incorrect password, Please try again</center>
 </div>
-<form action="" method="post" enctype="multipart/form-data" id="uploadForm">
-<div class="mb-5">
-<label for="Password" class="form-label">Password</label>
-<input  class="form-control" hidden required="required" name="id" value="<?php echo $row['id']; ?>" required>
-<input  class="form-control" hidden required="required" name="us" value="<?php echo $row['Username']; ?>" required>
-<input  class="form-control" hidden required="required" name="bck" value="<?php echo $bck; ?>" required>
-<input type="password" class="form-control" name="pass" placeholder="********">
+<center>
+<span style="color:green; display:none" id="vd"><img src="../loader/loader.gif" style="height:18px"> Please wait.. Restoring session</span>
+</center>
+<div class="floating-label form-group">
+<input  class="form-control" hidden="hidden" required="required" name="id" value="<?php echo $id; ?>" required>
+<input  class="form-control" hidden="hidden" required="required" name="us" value="<?php echo $User; ?>" required>
+<input  class="form-control" hidden="hidden" required="required" name="bck" value="<?php echo $bck; ?>" required>
+<label for="password" class="form-label">Password</label>
+<input type="password" class="form-control" name = "ps" aria-describedby="password" placeholder="Enter Password">
 </div>
-<div>
 </div>
-<button type="submit" class="btn btn-primary w-100">
-<span style="display:none" id="vd"> <img src="../loader/loader.gif" style="height:16px"> Restoring session.! Please wait</span>     
-<span id="vdd">Restore</span></button>
-<div class="text-muted pt-14">
-<p>©
-<script>document.write(new Date().getFullYear())</script> Finanza — by <i class="mdi mdi-heart text-danger"></i> I-Create Software Technology
-</p>
 </div>
+<button type="submit" class="btn btn-primary w-100" onclick="data()" >Restore Session</button>
 </form>
 </div>
 </div>
-</div>
-<div class="col-xl-7 d-none d-md-block">
-<div class="h-100 d-flex align-items-center overflow-hidden justify-content-center position-relative z-2 hero-section bg-body">
-<div class="floating-card position-absolute card-1">
-<div class="d-flex gap-5">
-<div class="bg-body-secondary shadow-lg rounded-3 px-4 py-2 team-info">
-<h6 class="mb-0">Olivia Martinez</h6>
-<small class="text-muted mb-0">Credit Officer</small>
-</div>
-<div class="avatar avatar-md bg-body-secondary shadow-lg rounded-3 linkedin">
-<img src="../assets/images/users/avatar-2.png" alt="Avatar Image" class="avatar-xs">
+<div class="sign-bg">
+<svg width="280" height="230" viewbox="0 0 431 398" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.05">
+<rect x="-157.085" y="193.773" width="543" height="77.5714" rx="38.7857" transform="rotate(-45 -157.085 193.773)" fill="#3B8AFF"></rect>
+<rect x="7.46875" y="358.327" width="543" height="77.5714" rx="38.7857" transform="rotate(-45 7.46875 358.327)" fill="#3B8AFF"></rect>
+<rect x="61.9355" y="138.545" width="310.286" height="77.5714" rx="38.7857" transform="rotate(45 61.9355 138.545)" fill="#3B8AFF"></rect>
+<rect x="62.3154" y="-190.173" width="543" height="77.5714" rx="38.7857" transform="rotate(45 62.3154 -190.173)" fill="#3B8AFF"></rect>
+</g>
+</svg>
 </div>
 </div>
-</div>
-<div class="floating-card position-absolute card-2 d-none d-xxl-block">
-<div class="d-flex gap-5">
-<div class="bg-body-secondary shadow-lg rounded-3 px-4 py-2 team-info">
-<h6 class="mb-0">James Anderson</h6>
-<small class="text-muted mb-0">Operations</small>
-</div>
-<div class="avatar avatar-md bg-body-secondary shadow-lg rounded-3 linkedin">
-<img src="../assets/images/users/avatar-1.png" alt="Avatar Image" class="avatar-xs">
+<div class="col-md-6 d-md-block d-none bg-primary p-0 vh-100 overflow-hidden">
+<img src="../assets/images/auth/04.png" class="img-fluid gradient-main animated-scaleX" alt="images" loading="lazy">
 </div>
 </div>
+</section>
 </div>
-<div class="floating-card position-absolute card-3">
-<div class="d-flex gap-5">
-<div class="avatar avatar-md bg-body-secondary shadow-lg rounded-3 linkedin">
-<img src="../assets/images/users/avatar-7.png" alt="Avatar Image" class="avatar-xs">
-</div>
-<div class="bg-body-secondary shadow-lg rounded-3 px-4 py-2 team-info">
-<h6 class="mb-0">Sophia Lee</h6>
-<small class="text-muted mb-0">Underwriter</small>
-</div>
-</div>
-</div>
-<div class="floating-card position-absolute card-4 d-none d-xxl-block">
-<div class="d-flex gap-5">
-<div class="avatar avatar-md bg-body-secondary shadow-lg rounded-3 linkedin">
-<img src="../assets/images/users/avatar-8.png" alt="Avatar Image" class="avatar-xs">
-</div>
-<div class="bg-body-secondary shadow-lg rounded-3 px-4 py-2 team-info">
-<h6 class="mb-0">Daniel Kim</h6>
-<small class="text-muted mb-0">Auditor</small>
-</div>
-</div>
-</div>
-<div class="floating-card position-absolute card-5">
-<div class="d-flex gap-5">
-<div class="avatar avatar-md bg-body-secondary shadow-lg rounded-3 linkedin">
-<img src="../assets/images/users/avatar-9.png" alt="Avatar Image" class="avatar-xs">
-</div>
-<div class="bg-body-secondary shadow-lg rounded-3 px-4 py-2 team-info">
-<h6 class="mb-0">Emma Johnson</h6>
-<small class="text-muted mb-0">Risk Manager</small>
-</div>
-</div>
-</div>
-
-
-<div class="text-center z-index-2 position-relative">
-<p class="display-5 text-body fw-normal mb-6">
-The Future of Micro Finance <br>
-<span class="text-primary display-6 fw-normal">FINANZA</span>
-</p>
-<p class="mb-14 px-4 fs-14 max-w-75 mx-auto">Loan management system for all kinds of loans. Streamline your lending process with our user-friendly platform.</p>
-<div class="d-flex justify-content-center align-items-center gap-2 mb-6">
-<div class="avatar-group avatar-group-sm">
-<div class="avatar avatar-circle">
-<img src="../assets/images/users/avatar-13.png" alt="Avatar Image" class="img-fluid">
-</div>
-<div class="avatar avatar-circle">
-<img src="../assets/images/users/avatar-14.png" alt="Avatar Image" class="img-fluid">
-</div>
-<div class="avatar avatar-circle">
-<img src="../assets/images/users/avatar-24.png" alt="Avatar Image" class="img-fluid">
-</div>
-<div class="avatar avatar-circle">
-<img src="../assets/images/users/avatar-16.png" alt="Avatar Image" class="img-fluid">
-</div>
-<div class="avatar avatar-circle avatar-dark">
-<span>3+</span>
-</div>
-</div>
-<span class="text-muted ">4M+ Users</span>
-</div>
-<button type="button" class="btn btn-primary">Get Started Free</button>
-</div>
-<div class="social-icons position-absolute d-flex gap-8">
-<div class="avatar avatar-md bg-body-secondary shadow-lg rounded-3 linkedin">
-<img src="../assets/images/social-icons/linkedin.png" alt="Avatar Image" class="avatar-2xs">
-</div>
-<div class="avatar avatar-md bg-body-secondary shadow-lg rounded-3 google">
-<img src="../assets/images/social-icons/google.png" alt="Avatar Image" class="avatar-2xs">
-</div>
-<div class="avatar avatar-md bg-body-secondary shadow-lg rounded-3 instagram">
-<img src="../assets/images/social-icons/instagram.png" alt="Avatar Image" class="avatar-2xs">
-</div>
-<div class="avatar avatar-md bg-body-secondary shadow-lg rounded-3 facebook">
-<img src="../assets/images/social-icons/facebook.png" alt="Avatar Image" class="avatar-2xs">
-</div>
-<div class="avatar avatar-md bg-body-secondary shadow-lg rounded-3 apple">
-<img src="../assets/images/social-icons/apple.png" alt="Avatar Image" class="avatar-2xs dafault-img">
-<img src="../assets/images/social-icons/apple-white.png" alt="Avatar Image" class="avatar-2xs dark-img">
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
 <script type="text/javascript">
 $(document).ready(function (e){
 $("#uploadForm").on('submit',(function(e){ e.preventDefault();
@@ -205,11 +390,12 @@ $("#nf").show();
 $("#nf").fadeOut(3000);
 } else {
 $("#vd").show();
+ToastNotification.success('Your session has been restored. !!!');
 setTimeout(function(){
-$("#vdd").hide();
-$("#vd").show();
+$("#vd").hide();
 window.location.href=data;
 }, 2200);
+
 }
 },
 error: function(){
@@ -218,20 +404,6 @@ error: function(){
 }));
 });
 </script>
-
-
-<!-- Bootstrap bundle js -->
-<script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Layouts main js -->
-<script src="../assets/libs/jquery/jquery.min.js"></script>
-<!-- Metimenu js -->
-<script src="../assets/libs/metismenu/metisMenu.min.js"></script>
-<!-- simplebar js -->
-<script src="../assets/libs/simplebar/simplebar.min.js"></script>
-<script src="../assets/libs/eva-icons/eva.min.js"></script>
-<!-- Scroll Top init -->
-<script src="../assets/js/scroll-top.init.js"></script>
-<!-- App js -->
-<script src="../assets/js/app.js"></script>
-</body>
-</html>
+<?php 
+include '../footer.php';
+?>

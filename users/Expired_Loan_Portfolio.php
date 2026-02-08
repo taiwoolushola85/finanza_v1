@@ -1,21 +1,3 @@
-
-<!-- TOP RIGHT (original) -->
-<div aria-live="polite" aria-atomic="true" class="position-fixed top-0 end-0 p-3" style="z-index: 1055;">
-<div class="toast" role="alert" id="toast" aria-live="assertive" aria-atomic="true" data-bs-autohide="false" style="display:none;">
-<div class="toast-header">
-<small class="fa fa-bell"></small>
-<strong class="me-auto" style="margin-left:8px;">Finanza</strong>
-<img src="../assets/images/logo-sm.png" class="rounded me-2" style="height:20px; width:20px" alt="Finanza icon">
-<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-</div>
-<div class="toast-body">
-<i class="fa fa-check"></i> Loan Successfully Assigned
-</div>
-</div>
-</div>
-
-
-
 <?php include 'head.php'; ?>
 
 <!-- ============================================================== -->
@@ -54,7 +36,7 @@
 <div class="row">
 <div class="col-sm-3">
 <label>Branch</label>
-<select class="form-control form-control-sm" id="branch" oninput="getBranch()">
+<select class="form-control form-control-md" id="branch" oninput="getBranch()">
 <option value="All">All</option>
 <?php 
 include '../config/db.php';
@@ -76,7 +58,7 @@ $name= $rows['Name'];
 </div>
 <div class="col-sm-3">
 <label>Maturity Date</label>
-<input type="date" class="form-control form-control-sm" id="date" oninput="getDate()" required>
+<input type="date" class="form-control form-control-md" id="date" oninput="getDate()" required>
 </div>
 </div>
 <br>
@@ -88,7 +70,7 @@ $name= $rows['Name'];
 <div class="row">
 <div class="col-sm-10" style="margin-top: 10px;">
 <label>Show Entries</label>
-<select class="form-control form-control-sm" id="maxRows" style="width:50px;" oninput="getEntry()">
+<select class="form-control form-control-md" id="maxRows" style="width:50px;" oninput="getEntry()">
 <option value="10">10</option>
 <option value="20">20</option>
 <option value="50">50</option>
@@ -96,7 +78,7 @@ $name= $rows['Name'];
 </select>
 </div>
 <div class="col-sm-2" style="margin-top: 10px;">
-<input type="search" class="form-control form-control-sm"  id="search" placeholder="search..." style="margin-top:10px">
+<input type="search" class="form-control form-control-md"  id="search" placeholder="search..." style="margin-top:10px">
 </div>
 </div>
 <br>
@@ -126,7 +108,7 @@ $name= $rows['Name'];
 
 <script type="text/javascript">
 $(document).ready(function(){
-$("#loader").show();
+$("#loader").modal('show');
 // ajax function start here
 $.ajax({
 method: "POST",
@@ -134,7 +116,7 @@ url: "load_defaulter.php",
 dataType: "html",  
 success:function(data){
 setTimeout(function(){
-$("#loader").hide();
+$("#loader").modal('hide');
 $('#result').html(data);
 }, 1000);
 }
@@ -146,7 +128,7 @@ $('#result').html(data);
 
 <script type="text/javascript">
 function getEntry()  {
-$("#loader").show();
+$("#loader").modal('show');
 $("result").hide();
 var maxRows = document.getElementById("maxRows").value;
 // ajax function start here
@@ -160,7 +142,7 @@ data: {
 success:function(data){
 $("result").show();
 setTimeout(function(){
-$("#loader").hide();
+$("#loader").modal('hide');
 $('#result').html(data);
 }, 1000);
 }
@@ -197,7 +179,7 @@ $('#result').html(data);
 
 <script type="text/javascript">
 function getBranch()  {
-$("#loader").show();
+$("#loader").modal('show');
 $("result").hide();
 var branch = document.getElementById("branch").value;
 // ajax function start here
@@ -211,7 +193,7 @@ data: {
 success:function(data){
 $("result").show();
 setTimeout(function(){
-$("#loader").hide();
+$("#loader").modal('hide');
 $('#result').html(data);
 }, 1000);
 }
@@ -225,7 +207,7 @@ $('#result').html(data);
 
 <script type="text/javascript">
 function getDate()  {
-$("#loader").show();
+$("#loader").modal('show');
 $("result").hide();
 var date = document.getElementById("date").value;
 // ajax function start here
@@ -239,7 +221,7 @@ data: {
 success:function(data){
 $("result").show();
 setTimeout(function(){
-$("#loader").hide();
+$("#loader").modal('hide');
 $('#result').html(data);
 }, 1000);
 }

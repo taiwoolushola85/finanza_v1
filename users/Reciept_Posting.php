@@ -1,8 +1,4 @@
 <?php include 'head.php'; ?>
-
-<?php 
-if($gr == 'Loan Officers'){
-?>
 <!-- Left Sidebar End -->
 <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 <!-- ============================================================== -->
@@ -35,6 +31,10 @@ if($gr == 'Loan Officers'){
 <br>
 <br>
 
+
+<?php 
+if($gr == 'Loan Officers'){
+?>
 
 <!-- GROUP SELECT -->
 <div class="row">
@@ -105,38 +105,21 @@ $("#result").html(
 }else if ($gr == 'Recovery'){
 ?>
 
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
-<!-- MAIN CONTENT -->
-<div class="main-content">
-<div class="page-content">
-<div class="container-fluid">
-<div class="card">
-<div class="card-body">
-<h6><b style="text-transform: uppercase;"> 
-<i class="fa fa-file"></i>
-RECIEPT POSTING </b></h6>
-</div>
-</div>
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <div id="results"></div>
 
-
-</div>
-</div>
-</div> <!-- END MAIN CONTENT -->
+ <!-- END MAIN CONTENT -->
 
 
 <script type="text/javascript">
 $(document).ready(function(){
-$("#loader").show();
+$("#loader").modal('show');
 // ajax function start here
 $.ajax({
 method: "POST",
@@ -144,7 +127,7 @@ url: "load_recovery_list.php",
 dataType: "html",  
 success:function(data){
 setTimeout(function(){
-$("#loader").hide();
+$("#loader").modal('hide');
 $('#results').html(data);
 }, 1000);
 }

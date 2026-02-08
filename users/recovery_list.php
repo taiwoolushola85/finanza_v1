@@ -80,7 +80,7 @@ foreach($json as $member){
 $(document).ready(function() {
 $('.invks').on('click', function(e) {e.preventDefault();
 $("#updateModal").hide();
-$("#view").show();
+$("#view").modal('show');
 var id = $(this).data('id');// username
 if(id) {
 $.ajax({
@@ -89,19 +89,19 @@ type: "GET",
 data: {'id': id},// username
 success: function(data) { 
 setTimeout(function() {
+$("#view").modal('hide');
 $("#updateModal").show();
-$("#view").hide();
 $('#result').html(data);
 }, 1000);
 },
 error: function(xhr, status, error) {
 alert('Error loading transaction: ' + error);
-$("#view").hide();
+$("#view").modal('hide');
 }
 });
 } else {
 alert('Invalid ID');
-$("#view").hide();
+$("#view").modal('hide');
 }
 });
 });

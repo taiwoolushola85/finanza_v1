@@ -305,7 +305,7 @@ WRN_PROFILE_DELETE = "You are about assign this loan to a recovery officer.?";
 var checked = confirm(WRN_PROFILE_DELETE);
 if(checked == true) {
 $("#updateModal").modal('hide');
-$("#please").show();
+$("#please").modal('show');
 $.ajax({
 url: "assign_loan.php",
 type: "POST",
@@ -315,21 +315,16 @@ cache: false,
 processData:false,
 success: function(data){
 if(data == 1){
-$("#please").hide();
+$("#please").modal('hide');
 alert("Loan has already been assigned to the loan officer ");
 $("#updateModal").modal('show');
 }else if(data == 2){
 setTimeout(function(){
-$("#please").hide();
-$("#toast").css("display", "block");
-$("#toast").show();
+$("#please").modal('hide');
+ToastNotification.success('Loan Successfully Assigned');
 }, 3000);
-setTimeout(function(){
-$("#please").hide();
-$("#toast").hide();
-}, 6000);
 }else{
-$("#please").hide();
+$("#please").modal('hide');
 alert(data);
 }
 },

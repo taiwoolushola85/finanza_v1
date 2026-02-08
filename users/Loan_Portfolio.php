@@ -29,9 +29,6 @@
 </div>
 <!-- end page title -->
 <br>
-<br>
-<br>
-<br>
 
 
 
@@ -89,6 +86,9 @@ $('#recieptdata').modal('hide');
 <?php 
 if($gr == "Loan Officers"){
 ?>
+<br>
+<br>
+<br>
 
 
 <div class="row">
@@ -106,6 +106,7 @@ if($gr == "Loan Officers"){
 </div>
 </div>
 <br>
+
 <div id="result"></div>
 
 
@@ -209,6 +210,9 @@ $('#result').html(data);
 }else if($gr == "Team Leaders"){
 ?>
 <br>
+<br>
+<br>
+
 <div class="row">
 <div class="col-sm-2">
 

@@ -574,6 +574,9 @@ aria-valuemin="0" aria-valuemax="<?php echo round($total_loan, 2); ?>">
 
 </div>
 </div>
+</div>
+</div>
+
 
 <div class="row">
 <div class="col-sm-6">
@@ -599,7 +602,7 @@ $total = $row[0];
 echo $total;
 ?>
 </h4>
-<small>[ Pending loan application ]</small>
+<small>[ Pending Application ]</small>
 </div>
 <div>
 </div>
@@ -632,7 +635,7 @@ $total = $row[0];
 echo $total;
 ?>
 </h4>
-<small>[ Customer closed loan ]</small>
+<small>[ Closed Loan ]</small>
 </div>
 <div>
 </div>
