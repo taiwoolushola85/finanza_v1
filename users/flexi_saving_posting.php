@@ -82,10 +82,10 @@ if (empty($sa)){
 
 }else{
 // saving record
-$query  = "INSERT INTO flexi_history (Flexi_Reg, Flexi_Account, Surname, Firstname, Othername, Branch, Branch_No, Plan, Amount, User, User_id, Officer_Name, 
-Team_Leader, Team_Name, Status, Date_Paid, Time_Paid, Payment_Method, Location, Posting_Method)
-VALUES ('$flexid', '$acct', '$fn', '$md', '$lnm', '$br', '$brid', '$pr_name', '$sa', '$us', '$us_id', '$ofn', '$tm', '$tmn', 'Waiting For Approval', '$d', '$ss',
-'Monie Point', '$path', 'Basic Posting')";
+$query  = "INSERT INTO flexi_history (Flexi_Reg, Flexi_Account, Surname, Firstname, Othername, Branch, Branch_No, Plan, Amount, User, User_id,
+Officer_Name, Team_Leader, Team_Name, Status, Date_Paid, Time_Paid, Payment_Method, Location, Posting_Method)
+VALUES ('$flexid', '$acct', '$fn', '$md', '$lnm', '$br', '$brid', '$pr_name', '$sa', '$us', '$us_id', '$ofn', '$tm', '$tmn', 'Waiting For Approval',
+'$d', '$ss', 'Monie Point', '$path', 'Basic Posting')";
 $result = mysqli_query($con, $query);
 if($result == true){
 echo 15;

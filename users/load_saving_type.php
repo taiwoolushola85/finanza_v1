@@ -196,7 +196,7 @@ WRN_PROFILE_DELETE = "You are about to make posting for this client..!! ?";
 var checked = confirm(WRN_PROFILE_DELETE);
 if(checked == true) {
 $("#updateModal").modal('hide');
-$("#please").show();
+$("#please").modal('show');
 $.ajax({
 url: "express_saving_posting.php",
 type: "POST",
@@ -208,43 +208,38 @@ success: function(data){
 $('#updateForm')[0].reset()
 $('#reciepts').attr('src', '');
 if(data==11){
-$("#please").hide();
+$("#please").modal('hide');
 alert("🚫 Amount entered is higher than loan balance");
 }else if(data==7){
-$("#please").hide();
+$("#please").modal('hide');
 alert(" 🚫 Payment reciept size is greater than 2MB !..");
 location.reload(true);
 }else if(data==4){
-$("#please").hide();
+$("#please").modal('hide');
 alert(" 🚫 You have already posted saving for a client in this group for today. Please check..");
 }else if(data==8){
-$("#please").hide();
+$("#please").modal('hide');
 alert(" 🚫 You attempting to make a double posting on a client savings account, please check..");
 }else if(data==9){
-$("#please").hide();
+$("#please").modal('hide');
 alert(" 🚫 You attempting to make a double posting on a client repayment, please check..");
 }else if(data==10){
-$("#please").hide();
+$("#please").modal('hide');
 alert(" 🚫 You have already done posting for a client in this group for today. Please try again..");
 }else if(data==20){
-$("#please").hide();
+$("#please").modal('hide');
 alert(" 🚫 Do not enter zero for repayments amount, instead leave the field empty");
 }else if(data==21){
-$("#please").hide();
+$("#please").modal('hide');
 alert(" 🚫 Do not enter zero for savings amount, instead leave the field empty");
 }else if(data==15){
 setTimeout(function(){
-$("#please").hide();
-$("#toast").css("display", "block");
-$("#toast").show();
+$("#please").modal('hide');
+ToastNotification.success('Express Saving Succesfully Posted');
 }, 3000);
-setTimeout(function(){
-$("#please").hide();
-$("#toast").hide();
-}, 6000);
 }else{
 alert(data);
-$("#please").hide();
+$("#please").modal('hide');
 }
 },
 error: function(){
@@ -397,20 +392,6 @@ echo date_format($date,"d-M-Y");
 </div>
 
 
-<div class="modal" id="please" tabindex="-1" aria-labelledby="verticallyCenteredModalLabel" aria-hidden="true" style="display: none;">
-<div class="modal-dialog modal-dialog-centered modal-sm">
-<div class="modal-content">
-<div class="modal-body">
-<center>
-<i>
-<img src="loader.gif" style="height:20px"> Processing Transaction! Please wait...
-</i>
-</center>
-</div>
-</div>
-</div>
-</div>
-
 
 <script>
 var loadClients = function(event) {
@@ -456,7 +437,7 @@ WRN_PROFILE_DELETE = "You are about to make posting for this client..!! ?";
 var checked = confirm(WRN_PROFILE_DELETE);
 if(checked == true) {
 $("#updateModal").modal('hide');
-$("#please").show();
+$("#please").modal('show');
 $.ajax({
 url: "flexi_saving_posting.php",
 type: "POST",
@@ -468,43 +449,38 @@ success: function(data){
 $('#updateFlexi')[0].reset();
 $('#recieptf').attr('src', '');
 if(data==11){
-$("#please").hide();
+$("#please").modal('hide');
 alert("🚫 Amount entered is higher than loan balance");
 }else if(data==7){
-$("#please").hide();
+$("#please").modal('hide');
 alert(" 🚫 Payment reciept size is greater than 2MB !..");
 location.reload(true);
 }else if(data==4){
-$("#please").hide();
+$("#please").modal('hide');
 alert(" 🚫 You have already posted saving for a client in this group for today. Please check..");
 }else if(data==8){
-$("#please").hide();
+$("#please").modal('hide');
 alert(" 🚫 You attempting to make a double posting on a client savings account, please check..");
 }else if(data==9){
-$("#please").hide();
+$("#please").modal('hide');
 alert(" 🚫 You attempting to make a double posting on a client repayment, please check..");
 }else if(data==10){
-$("#please").hide();
+$("#please").modal('hide');
 alert(" 🚫 You have already done posting for a client in this group for today. Please try again..");
 }else if(data==20){
-$("#please").hide();
+$("#please").modal('hide');
 alert(" 🚫 Do not enter zero for repayments amount, instead leave the field empty");
 }else if(data==21){
-$("#please").hide();
+$("#please").modal('hide');
 alert(" 🚫 Do not enter zero for savings amount, instead leave the field empty");
 }else if(data==15){
 setTimeout(function(){
-$("#please").hide();
-$("#toasts").css("display", "block");
-$("#toasts").show();
+$("#please").modal('hide');
+ToastNotification.success('Flexi Saving Succesfully Posted');
 }, 3000);
-setTimeout(function(){
-$("#please").hide();
-$("#toasts").hide();
-}, 6000);
 }else{
 alert(data);
-$("#please").hide();
+$("#please").modal('hide');
 }
 },
 error: function(){

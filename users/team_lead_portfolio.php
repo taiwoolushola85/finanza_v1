@@ -167,8 +167,8 @@ $(document).ready(function() {
         e.stopImmediatePropagation(); // Ensure no other scripts interfere
 
         const id = $(this).data('id');
-        const $modal = $("#updateBm");
-        const $profileContainer = $('#page');
+        const $modal = $("#updateModal");
+        const $profileContainer = $('#pageloader');
 
         // 2. Open the modal immediately
         $modal.modal('show');

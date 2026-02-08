@@ -34,32 +34,10 @@
 <br>
 
 
-<?php 
-if($gr == "Loan Officers"){
-?>
-
-
-<div class="row">
-<div class="col-sm-10" style="margin-top: 10px;">
-<label>Show Entries</label>
-<select class="form-control form-control-md" id="maxRows" style="width:50px;" oninput="getEntry()">
-<option value="10">10</option>
-<option value="20">20</option>
-<option value="50">50</option>
-<option value="100">100</option>
-</select>
-</div>
-<div class="col-sm-2" style="margin-top: 10px;">
-<input type="search" class="form-control form-control-md"  id="search" placeholder="search..." style="margin-top:10px">
-</div>
-</div>
-<br>
-<div id="result"></div>
 
 
 
-
-<div class="modal" id="loanofficerModal" tabindex="-1" aria-hidden="true">
+<div class="modal" id="updateModal" tabindex="-1" aria-hidden="true">
 <div class="modal-dialog modal-lg modal-dialog-centered" style="display:none; width:1200px; display: flex !important; align-items: center; justify-content: center;">
 <div class="modal-content">
 <div class="modal-header">
@@ -89,12 +67,48 @@ if($gr == "Loan Officers"){
 </center>
 </div>
 <div class="modal-footer">
-<button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal">Close</button>
+<button type="button" class="btn btn-light btn-sm" id="btnHide">Close</button>
 </div>
 </div>
 </div>
 </div>
 </div>
+
+
+
+<script>
+$(document).ready(function () {
+$('#btnHide').on('click', function () {
+$('#updateModal').modal('show');
+$('#recieptdata').modal('hide');
+});
+});
+</script>
+
+
+<?php 
+if($gr == "Loan Officers"){
+?>
+
+
+<div class="row">
+<div class="col-sm-10" style="margin-top: 10px;">
+<label>Show Entries</label>
+<select class="form-control form-control-md" id="maxRows" style="width:50px;" oninput="getEntry()">
+<option value="10">10</option>
+<option value="20">20</option>
+<option value="50">50</option>
+<option value="100">100</option>
+</select>
+</div>
+<div class="col-sm-2" style="margin-top: 10px;">
+<input type="search" class="form-control form-control-md"  id="search" placeholder="search..." style="margin-top:10px">
+</div>
+</div>
+<br>
+<div id="result"></div>
+
+
 
 
 
@@ -218,44 +232,6 @@ $('#result').html(data);
 <div id="results"></div>
 
 
-
-
-
-<div class="modal" id="updateBm" tabindex="-1" aria-hidden="true">
-<div class="modal-dialog modal-lg modal-dialog-centered" style="display:none; width:1200px; display: flex !important; align-items: center; justify-content: center;">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">CUSTOMER PROFILE</h5>
-</div>
-<div class="modal-body">
-<div id="page"></div>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal">Close</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="modal" id="recieptdata" tabindex="-1" aria-hidden="true">
-<div class="modal-dialog modal-lg modal-dialog-centered" style="display:none; width:400px; display: flex !important; align-items: center; justify-content: center;">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">REPAYMENT RECIEPT</h5>
-</div>
-<div class="modal-body">
-<center>
-<img src="" alt="" id="recp" style="height:520px" width="350px" class="img-thumbnail">
-</center>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal">Close</button>
-</div>
-</div>
-</div>
-</div>
-</div>
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -540,81 +516,6 @@ expired loan outstanding</p>
 
 
 
-
-
-<div class="modal" id="updateModal" tabindex="-1" aria-hidden="true">
-<div class="modal-dialog modal-lg modal-dialog-centered" style="display:none; width:1200px; display: flex !important; align-items: center; justify-content: center;">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">CUSTOMER PROFILE</h5>
-</div>
-<div class="modal-body">
-<div id="prof"></div>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal">Close</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
-<div class="modal" id="updateModals" tabindex="-1" aria-hidden="true">
-<div class="modal-dialog modal-lg modal-dialog-centered" style="display:none; width:1200px; display: flex !important; align-items: center; justify-content: center;">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">CUSTOMER PROFILE</h5>
-</div>
-<div class="modal-body">
-<div id="profi"></div>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal">Close</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
-<div class="modal" id="recieptdata" tabindex="-1" aria-hidden="true">
-<div class="modal-dialog modal-lg modal-dialog-centered" style="display:none; width:400px; display: flex !important; align-items: center; justify-content: center;">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">REPAYMENT RECIEPT</h5>
-</div>
-<div class="modal-body">
-<center>
-<img src="" alt="" id="recp" style="height:520px" width="350px" class="img-thumbnail">
-</center>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal">Close</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
-<div class="modal" id="crcData" tabindex="-1" aria-hidden="true">
-<div class="modal-dialog modal-lg modal-dialog-centered" style="display:none; width:900px; display: flex !important; align-items: center; justify-content: center;">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">CRC DATA</h5>
-</div>
-<div class="modal-body">
-<b id="de"></b>
-<embed src="" id="pdf" type="application/pdf"  height="450px" width="100%">
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal">Close</button>
-</div>
-</div>
-</div>
-</div>
-</div>
 
 
 <script type="text/javascript">

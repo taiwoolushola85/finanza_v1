@@ -167,7 +167,7 @@ $(document).ready(function() {
 $(document).off('click', '.invks').on('click', '.invks', function(e) { e.preventDefault();
 e.stopImmediatePropagation(); // Prevents the event from bubbling up
 const id = $(this).data('id');
-const $modal = $("#loanofficerModal");
+const $modal = $("#updateModal");
 const $profileContainer = $('#pageloader');
 // 2. Open the modal
 $modal.modal('show');

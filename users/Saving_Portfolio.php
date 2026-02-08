@@ -450,11 +450,13 @@ $('#results').html(data);
 
 
 <br>
+<div class="row">
 <div class="col-sm-2">
 <select class="form-control form-control-md" id="types" oninput="savingType()">
 <option value="Express">Express Saving</option>
 <option value="Flexi">Flexi Saving</option>
 </select>
+</div>
 </div>
 <br>
 <br>

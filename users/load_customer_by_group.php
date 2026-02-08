@@ -201,69 +201,73 @@ alert ("🚫" + data)
 
 
 
-
 <script type="text/javascript">
-$(document).ready(function (e){
-$("#reciptUpload").on('submit',(function(e){ e.preventDefault();
-WRN_PROFILE_DELETE = "You are about to submit this repayment posting for approval..";
-var checked = confirm(WRN_PROFILE_DELETE);
-if(checked == true) {
+$(document).ready(function(e) {
+$("#reciptUpload").on('submit', function(e) {e.preventDefault();
+const WRN_PROFILE_DELETE = "You are about to submit this repayment posting for approval..";
+const checked = confirm(WRN_PROFILE_DELETE);
+if (checked !== true) {
+return false;
+}
+// Show loading modal
 $("#updateModal").modal('hide');
-$("#please").modal('show');
 $.ajax({
 url: "repayment_posting_bck.php",
 type: "POST",
 data: new FormData(this),
-contentType: false, 
-cache: false, 
-processData:false,
-success: function(data){
+contentType: false,
+cache: false,
+processData: false,
+success: function(data) {
+$("#please").modal('show');
+
+// Clean response (remove whitespace)
+const response = String(data).trim();
+// Error messages mapping
+const errorMessages = {
+'1': '🚫 Do not put zero as an amount for repayments amount.',
+'2': '🚫 Do not put zero as an amount for saving amount.',
+'3': '🚫 Receipt size is more than 5MB. Please crop the image.',
+'4': '🚫 You have posted repayment for this customer today. Please try again next day.',
+'5': '🚫 This customer has a pending repayment posted waiting for approval. Please confirm from your lead.',
+'6': '🚫 You have posted saving for this customer today. Please try again next day.',
+'7': '🚫 This customer has a pending savings posted waiting for approval. Please confirm from your lead.',
+'8': '🚫 The amount you entered is higher than the customer current loan balance.',
+'9': '🚫 You are not allowed to post only savings for this customer. Please include the repayment amount.',
+'22': '🚫 Please upload a valid receipt image.'
+};
+if (response === '10') {
+setTimeout(function() {
+ // Hide loading modal
 $("#please").modal('hide');
+// Success case
 $('#reciept').attr('src', '');
 $("#reciptUpload")[0].reset();
-if(data == 1){
-$("#please").modal('hide');
-alert("🚫 Do not put zero as an amount for repayments amount..");
-}else if (data == 2){
-$("#please").modal('hide');
-alert("🚫 Do not put zero as an amount for saving amount..");   
-}else if (data == 3){
-$("#please").modal('hide');
-alert("🚫 Reciept size is more than 5MB, Please crop the image..");   
-}else if (data == 4){
-$("#please").modal('hide');
-alert("🚫 You have posted repayment for this customer today. please try again next day.");   
-}else if (data == 5){
-$("#please").modal('hide');
-alert("🚫 This customer has a pending repayment posted waiting for approval. please confirm from your lead");   
-}else if (data == 6){
-$("#please").modal('hide');
-alert("🚫 You have posted saving for this customer today. please try again next day.");   
-}else if (data == 7){
-$("#please").modal('hide');
-alert("🚫 This customer has a pending savings posted waiting for approval. please confirm from your lead");  
-}else if (data == 8){
-$("#please").modal('hide');
-alert("🚫 The amount you entered is higher than the customer current loan balance");  
-}else if (data == 9){
-$("#please").modal('hide');
-alert("🚫 You are not allowed to post only savings, for this customer. please include the repayment amount.");   
-}else if(data == 10){
-setTimeout(function(){
-$("#please").modal('hide');
 ToastNotification.success('Repayment Posted Successfully');
-}, 3000);
-
-}else{
+}, 2000);
+} else if (errorMessages[response]) {
 $("#please").modal('hide');
-alert ("🚫" + data)
+// Known error codes
+alert(errorMessages[response]);
+} else {
+// Hide loading modal
+$("#please").modal('hide');
+// Unknown error - display server response
+alert('🚫 ' + response);
 }
 },
-error: function(){
+error: function(xhr, status, error) {
+$("#please").modal('hide');
+console.error('AJAX Error:', {
+status: status,
+error: error,
+response: xhr.responseText
+});
+// Hide loading modal
+$("#please").modal('hide');
+alert('🚫 An error occurred while processing your request. Please try again.');
 }
 });
-}
-}));
+});
 });
 </script>
-

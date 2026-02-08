@@ -125,17 +125,17 @@ try {
             Loan_Account_No, Transaction_id, Saving_Account_No, Firstname, Middlename, Lastname, 
             Unions, Union_Code, Loan_Amount, Amount, Savings, Duration, Frequency, Rate, Loan_Type, 
             Product_id, Branch, Branch_Code, Status, User, User_id, Team_Leader, Team_Name, Officer_Name, 
-            Date_Paid, Time_Paid, Team_id, Interest_Amt, Expected_Amount, Total_Loan, Location, 
+            Date_Paid, Time_Paid, Team_id, Interest_Amt, Monthly_Interest, Expected_Amount, Total_Loan, Location, 
             Balance, Phone, Payment_Method, Alert, Post_Method, Reciept_No, Reciept_Status, 
             Posting_Status, Months, Years
         ) VALUES (
-             ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
-            'Waiting For Approval', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Monie Point', 
+             ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
+            'Waiting For Approval', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Monie Point', 
             ?, 'Basic Posting', 'Not Valid', 'Denied', 'Successfull', ?, ?
         )
     ");
 
-    $stmt->bind_param("sssssssssssssssssssssssssssssssssssssss",
+    $stmt->bind_param("ssssssssssssssssssssssssssssssssssssssss",
         $id, $customer['Disbursement_No'], $customer['Reg_id'], $id,
         $customer['Loan_Account_No'], $customer['Transaction_id'], $customer['Savings_Account_No'],
         $customer['Firstname'], $customer['Middlename'], $customer['Lastname'],
@@ -144,7 +144,7 @@ try {
         $customer['Product'], $customer['Product_id'], $customer['Branch'], $customer['Branch_id'],
         $customer['User'], $customer['User_id'], $customer['Team_Leader'], $customer['Team_Name'],
         $customer['Officer_Name'], $currentDate, $currentTime, $customer['Team_id'],
-        $interestPerMonth, $customer['Expected_Amount'], $customer['Total_Loan'], $receiptPath,
+        $interestPerMonth, $interestPerMonth, $customer['Expected_Amount'], $customer['Total_Loan'], $receiptPath,
         $newBalance, $customer['Phone'], $customer['Alert'], $month, $year
     );
 
@@ -158,29 +158,28 @@ try {
         
         $stmt = $con->prepare("
             INSERT INTO save (
-                Session_No, History_id, Virtual_Acct, Reps_id, Disbursement_No, Register_id,
-                Repayment_id, Savings_id, Loan_Account_No, Transaction_id, Saving_Account,
+                BVN_ID, History_id, Reps_id, Disbursement_No, Register_id,
+                Repayment_id, Loan_Account_No, Transaction_id, Saving_Account,
                 Firstname, Middlename, Lastname, Unions, Union_Code, Loan_Amount, Savings,
                 Duration, Frequency, Rate, Loan_Type, Product_id, Branch, Branch_Code,
                 Reciept, Status, User, User_id, Team_Leader, Officer_Name, Team_Name,
                 Date_Paid, Time_Paid, Team_id, Payment_Method, Posting_Method, Months, Years
             ) VALUES (
-                'NA', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                 ?, 'Waiting For Approval', ?, ?, ?, ?, ?, ?, ?, ?, 'Monie Point', 'Basic Posting', ?, ?
             )
         ");
 
         // Fixed bind_param:
-        // 1. Corrected type string length (35 chars: 1 'i' + 34 's')
+        // 1. Corrected type string length (37 chars: 1 'i' + 34 's')
         // 2. Added $receiptPath at position 25 to match the 'Reciept' placeholder
-        $stmt->bind_param("issssssssssssssssssssssssssssssssss",
+        $stmt->bind_param("ssssssssssssssssssssssssssssssssss",
+            $customer['BVN'], 
             $historyId, 
-            $customer['Account_Number'], 
             $id, 
             $customer['Disbursement_No'], 
             $customer['Reg_id'],
-            $id, 
-            $savingsId, 
+            $id,  
             $customer['Loan_Account_No'], 
             $customer['Transaction_id'], 
             $customer['Savings_Account_No'], 

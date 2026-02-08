@@ -351,13 +351,13 @@ $result = mysqli_query($con, $query);
 $last_id = mysqli_insert_id($con);
 
 // deposit for savings
-$result = mysqli_query($con, "INSERT INTO save (BVN_ID, History_id, Reps_id, Virtual_Acct, Disbursement_No, Register_id, Repayment_id, Savings_id, 
+$result = mysqli_query($con, "INSERT INTO save (BVN_ID, History_id, Reps_id, Disbursement_No, Register_id, Repayment_id,
 Loan_Account_No, Transaction_id, Saving_Account, Firstname, Middlename, Lastname, Unions, Union_Code, Loan_Amount, Savings, Duration, Frequency, Rate, 
 Loan_Type, Product_id, Branch, Branch_Code, Status, User, User_id, Team_Leader, Officer_Name, Team_Name, Date_Paid, Time_Paid, Team_id, Payment_Method, 
 Posting_Method, Months, Years)
-VALUE('$bv','$last_id', '$last_id', '$sku', '$dn', '$id', '$last_id', '$id$id', '$lon', '10010$id', '$sva', '$fn', '$md', '$ln', '$un', '$un_id', '$la', '$up', 
-'$ten', '$dur', '$rt', '$pr', '$pr_id', '$br', '$br_id', 'Paid', '$us', '$user_id', '$tl', '$of', '$tn', '$d', '$s', '$tms_id', 'System Payment', 'Initial Deposit',
-'$mth', '$yrs')");
+VALUE('$bv', '$last_id', '$last_id', '$dn', '$id', '$last_id', '$lon', '10010$id', '$sva', '$fn', '$md', '$ln', '$un', '$un_id', '$la', '$up', 
+'$ten', '$dur', '$rt', '$pr', '$pr_id', '$br', '$br_id', 'Paid', '$us', '$user_id', '$tl', '$of', '$tn', '$d', '$s', '$tms_id', 'System Payment',
+'Initial Deposit', '$mth', '$yrs')");
 
 
 // updating savings deposit

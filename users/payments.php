@@ -107,7 +107,7 @@ echo 'Total:'. number_format($pmt,2);
                     <?php if ($pm == 'Cash Payment'): ?>
                         <span class="text-muted">No Receipt</span>
                     <?php else: ?>
-                        <a href="#" class="invk" data-toggle="modal" data-target="#recieptdata" id="<?php echo $h_id; ?>">View Receipt</a>
+                        <a href="#" class="invk" data-bs-toggle="modal" data-bs-target="#recieptdata" id="<?php echo $h_id; ?>">View Receipt</a>
                     <?php endif; ?>
                 </td>
             </tr>

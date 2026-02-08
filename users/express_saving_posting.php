@@ -17,7 +17,8 @@ exit();
 $result = mysqli_query($con, "SELECT * FROM savings WHERE id='$id'");
 $row= mysqli_fetch_array($result);
 $id = $row['id'];
-$virtual_acct = $row['Virtual_Account'];
+$repid = $row['Repayments_id'];
+$bvn = $row['Client_BVN'];
 $dis = $row['Disbursement_No'];
 $tr = $row['Transaction_id'];
 $ln = $row['Loan_Account_No'];
@@ -98,10 +99,10 @@ if (empty($sa)){
 
 }else{
 // saving record
-$query  = "INSERT INTO save (Session_No, History_id, Virtual_Acct, Reps_id, Disbursement_No, Register_id, Repayment_id, Savings_id, Loan_Account_No, Transaction_id, 
+$query  = "INSERT INTO save (BVN_ID, History_id, Reps_id, Disbursement_No, Register_id, Repayment_id, Loan_Account_No, Transaction_id, 
 Saving_Account, Firstname, Middlename, Lastname, Unions, Union_Code, Loan_Amount, Savings, Duration, Frequency, Rate, Loan_Type, Product_id, Branch, Branch_Code, 
 Reciept, Status, User, User_id, Team_Leader, Officer_Name, Team_Name, Date_Paid, Time_Paid, Team_id, Payment_Method, Posting_Method, Months, Years)
-VALUES ('NA', '$id', '$virtual_acct', '$id', '$dis', '$reg', '$id', '$rand', '$ln', '$tr', '$sn', '$fn', '$md', '$lnm', '$un', '$cu_id', '$la', '$sa', '$du', '$fr', 
+VALUES ('$bvn', '$rand$id', '$repid', '$dis', '$reg', '$repid', '$ln', '$tr', '$sn', '$fn', '$md', '$lnm', '$un', '$cu_id', '$la', '$sa', '$du', '$fr', 
 '$rt', '$pr_name', '$pr_id', '$br_name', '$br_id', '$path', 'Waiting For Approval', '$us', '$us_id', '$tm', '$ofn', '$tmn', '$d',  '$ss',  '$tim', 
 'Monie Point', 'Basic Posting', '$mth', '$yrs')";
 $result = mysqli_query($con, $query);

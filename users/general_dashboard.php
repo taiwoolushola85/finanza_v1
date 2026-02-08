@@ -271,7 +271,7 @@ echo number_format($total,2);
 <div class="card">
 <div class="card-body">
 <div class="d-flex align-items-start justify-content-between mb-2">
-<p class="mb-0 text-dark"><b>EARNED INCOME <br> MONTHLY</b></p>
+<p class="mb-0 text-dark"><b>DISBURSEMENT YEAR <br> TO DATE</b></p>
 <a class="badge rounded-pill bg-soft-primary" href="javascript:void(0);">
 <svg fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.7689 8.3818H22C22 4.98459 19.9644 3 16.5156 3H7.48444C4.03556 3 2 4.98459 2 8.33847V15.6615C2 19.0154 4.03556 21 7.48444 21H16.5156C19.9644 21 22 19.0154 22 15.6615V15.3495H17.7689C15.8052 15.3495 14.2133 13.7975 14.2133 11.883C14.2133 9.96849 15.8052 8.41647 17.7689 8.41647V8.3818ZM17.7689 9.87241H21.2533C21.6657 9.87241 22 10.1983 22 10.6004V13.131C21.9952 13.5311 21.6637 13.8543 21.2533 13.8589H17.8489C16.8548 13.872 15.9855 13.2084 15.76 12.2643C15.6471 11.6783 15.8056 11.0736 16.1931 10.6122C16.5805 10.1509 17.1573 9.88007 17.7689 9.87241ZM17.92 12.533H18.2489C18.6711 12.533 19.0133 12.1993 19.0133 11.7877C19.0133 11.3761 18.6711 11.0424 18.2489 11.0424H17.92C17.7181 11.0401 17.5236 11.1166 17.38 11.255C17.2364 11.3934 17.1555 11.5821 17.1556 11.779C17.1555 12.1921 17.4964 12.5282 17.92 12.533ZM6.73778 8.3818H12.3822C12.8044 8.3818 13.1467 8.04812 13.1467 7.63649C13.1467 7.22487 12.8044 6.89119 12.3822 6.89119H6.73778C6.31903 6.89116 5.9782 7.2196 5.97333 7.62783C5.97331 8.04087 6.31415 8.37705 6.73778 8.3818Z" fill="currentColor" />
@@ -285,13 +285,13 @@ include '../config/db.php';
 $d = date('Y-m-d');
 $m = date('M');
 $y = date('Y');
-$result = mysqli_query($con, "SELECT SUM(Interest_Amt) FROM history WHERE Months = '$m' AND Years = '$y' AND Status ='Paid'");
+$result = mysqli_query($con, "SELECT SUM(Loan_Amount) FROM repayments WHERE Years = '$y' AND Status !='Cancelled'");
 $row = mysqli_fetch_array($result);
 $total = $row[0];
 echo number_format($total,2);
 ?>
 </h4>
-<small>[ Interest on repayment per month ]</small>
+<small>[ Total Disbursement in a year ]</small>
 </div>
 </div>
 </div>
@@ -300,7 +300,7 @@ echo number_format($total,2);
 <div class="card">
 <div class="card-body">
 <div class="d-flex align-items-start justify-content-between mb-2">
-<span class="text-dark"><b>OTHER INCOME <br> MONTHLY</b></span>
+<span class="text-dark"><b>EXPIRED LOAN <br> YEAR TO DATE</b></span>
 <a class="badge rounded-pill bg-soft-primary" href="javascript:void(0);">
 <svg fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.7689 8.3818H22C22 4.98459 19.9644 3 16.5156 3H7.48444C4.03556 3 2 4.98459 2 8.33847V15.6615C2 19.0154 4.03556 21 7.48444 21H16.5156C19.9644 21 22 19.0154 22 15.6615V15.3495H17.7689C15.8052 15.3495 14.2133 13.7975 14.2133 11.883C14.2133 9.96849 15.8052 8.41647 17.7689 8.41647V8.3818ZM17.7689 9.87241H21.2533C21.6657 9.87241 22 10.1983 22 10.6004V13.131C21.9952 13.5311 21.6637 13.8543 21.2533 13.8589H17.8489C16.8548 13.872 15.9855 13.2084 15.76 12.2643C15.6471 11.6783 15.8056 11.0736 16.1931 10.6122C16.5805 10.1509 17.1573 9.88007 17.7689 9.87241ZM17.92 12.533H18.2489C18.6711 12.533 19.0133 12.1993 19.0133 11.7877C19.0133 11.3761 18.6711 11.0424 18.2489 11.0424H17.92C17.7181 11.0401 17.5236 11.1166 17.38 11.255C17.2364 11.3934 17.1555 11.5821 17.1556 11.779C17.1555 12.1921 17.4964 12.5282 17.92 12.533ZM6.73778 8.3818H12.3822C12.8044 8.3818 13.1467 8.04812 13.1467 7.63649C13.1467 7.22487 12.8044 6.89119 12.3822 6.89119H6.73778C6.31903 6.89116 5.9782 7.2196 5.97333 7.62783C5.97331 8.04087 6.31415 8.37705 6.73778 8.3818Z" fill="currentColor" />
@@ -311,28 +311,15 @@ echo number_format($total,2);
 <h4>
 <?php 
 include '../config/db.php';
-$d = date('Y-m-d');
+$dt = date('Y-m-d');
 $yrs = date('Y');
-$mt = date('M');
-$result = mysqli_query($con, "SELECT SUM(Upfront) FROM register WHERE Frequency = 'Daily' AND Months = '$mt' AND Year_Booked = '$yrs' 
-AND Status = 'Disbursed'");
+// public sector
+$result = mysqli_query($con, "SELECT SUM(Total_Bal) FROM repayments WHERE '$dt' > Maturity_Date AND Status = 'Active' AND Years = 'yrs'");
 $row = mysqli_fetch_array($result);
-$totalm = $row[0];
-//
-$result = mysqli_query($con, "SELECT SUM(Inssurance) FROM register WHERE Months = '$mt' AND Year_Booked = '$yrs' AND Status = 'Disbursed'");
-$row = mysqli_fetch_array($result);
-$totalup = $row[0];
-//
-$result = mysqli_query($con, "SELECT SUM(Form) FROM register WHERE Months = '$mt' AND Year_Booked = '$yrs' AND Status = 'Disbursed'");
-$row = mysqli_fetch_array($result);
-$totalman = $row[0];
-//
-$result = mysqli_query($con, "SELECT SUM(Card) FROM register WHERE Months = '$mt' AND Year_Booked = '$yrs' AND Status = 'Disbursed'");
-$row = mysqli_fetch_array($result);
-$total1 = $row[0];
-
-echo number_format($totalm + $totalup + $totalman + $total1,2);
-?></h4>
+$total = $row[0];
+echo number_format($total,2);
+?>
+</h4>
 <small>[ Total overall other income ]</small>
 </div>
 
@@ -394,7 +381,21 @@ for ($j=0 ; $j < $Count; $j++){
 $rows = mysqli_fetch_array($result);
 $pix= $rows['Location'];
 ?>
-<img class="rounded-circle bg-soft-primary img-fluid avatar-40 mb-2" src="<?php echo $pix; ?>" alt="" loading="lazy">
+<?php
+$img = $pix ?? '';
+$defaultImage = '../assets/no-image.png';
+if (!empty($img)) {
+// Check if path starts with ../
+if (strpos($img, '../') === 0) {
+$imgPath = $img;
+} else {
+$imgPath = '../' . $img;
+}
+} else {
+$imgPath = $defaultImage;
+}
+?>
+<img class="rounded-circle bg-soft-primary img-fluid avatar-40 mb-2" src="<?php echo $imgPath; ?>" alt="" loading="lazy">
 <?php
 }
 }
@@ -448,7 +449,8 @@ echo round($npl);
 </h6>
 </div>
 <div class="progress bg-soft-primary shadow-none w-100" style="height: 6px">
-<div class="progress-bar bg-primary" data-toggle="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+<div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo round($npl, 2); ?>%;" 
+aria-valuenow="<?php echo round($npl, 2); ?>" aria-valuemin="0" aria-valuemax="100" title="NPL: <?php echo number_format($npl, 2); ?>%"></div>
 </div>
 </div> 
 </div>
@@ -469,12 +471,22 @@ $year = date('Y');
 $result = mysqli_query($con, "SELECT SUM(Total_Bal) FROM repayments WHERE Status = 'Active' AND Frequency = 'Daily'");
 $row = mysqli_fetch_array($result);
 $total = $row[0];
+//
+$result = mysqli_query($con, "SELECT SUM(Total_Loan) FROM repayments WHERE Status = 'Active' AND Frequency = 'Daily'");
+$row = mysqli_fetch_array($result);
+$total_loan = $row[0];
 echo number_format($total,2);
+// Calculate percentage for progress bar
+$percentage = ($total_loan > 0) ? ($total / $total_loan) * 100 : 0;
+$percentage = min(100, max(0, $percentage)); // Clamp between 0-100
 ?>
 </h6>
 </div>
 <div class="progress bg-soft-success shadow-none w-100" style="height: 6px">
-<div class="progress-bar bg-success" data-toggle="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+<div class="progress-bar bg-success" role="progressbar" style="width: <?php echo round($percentage, 2); ?>%;" aria-valuenow="<?php echo round($total, 2); ?>" 
+aria-valuemin="0" aria-valuemax="<?php echo round($total_loan, 2); ?>">
+<span class="sr-only"><?php echo round($percentage, 1); ?>% Complete</span>
+</div>
 </div>
 </div> 
 </div>
@@ -496,11 +508,22 @@ $result = mysqli_query($con, "SELECT SUM(Total_Bal) FROM repayments WHERE Status
 $row = mysqli_fetch_array($result);
 $total = $row[0];
 echo number_format($total,2);
+//
+$result = mysqli_query($con, "SELECT SUM(Total_Loan) FROM repayments WHERE Status = 'Active' AND Frequency = 'Weekly'");
+$row = mysqli_fetch_array($result);
+$total_loan = $row[0];
+echo number_format($total,2);
+// Calculate percentage for progress bar
+$percentage = ($total_loan > 0) ? ($total / $total_loan) * 100 : 0;
+$percentage = min(100, max(0, $percentage)); // Clamp between 0-100
 ?>
+
 </h6>
 </div>
 <div class="progress bg-soft-info shadow-none w-100" style="height: 6px">
-<div class="progress-bar bg-info" data-toggle="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+<div class="progress-bar bg-info" role="progressbar" style="width: <?php echo round($percentage, 2); ?>%;" aria-valuenow="<?php echo round($total, 2); ?>" 
+aria-valuemin="0" aria-valuemax="<?php echo round($total_loan, 2); ?>">
+<span class="sr-only"><?php echo round($percentage, 1); ?>% Complete</span>
 </div>
 </div>
 </div>
@@ -526,11 +549,21 @@ $result = mysqli_query($con, "SELECT SUM(Total_Bal) FROM repayments WHERE Status
 $row = mysqli_fetch_array($result);
 $total = $row[0];
 echo number_format($total,2);
+//
+$result = mysqli_query($con, "SELECT SUM(Total_Loan) FROM repayments WHERE Status = 'Active' AND Frequency = 'Daily'");
+$row = mysqli_fetch_array($result);
+$total_loan = $row[0];
+echo number_format($total,2);
+// Calculate percentage for progress bar
+$percentage = ($total_loan > 0) ? ($total / $total_loan) * 100 : 0;
+$percentage = min(100, max(0, $percentage)); // Clamp between 0-100
 ?>
 </h6>
 </div>
 <div class="progress bg-soft-warning shadow-none w-100" style="height: 6px">
-<div class="progress-bar bg-warning" data-toggle="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+<div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo round($percentage, 2); ?>%;" aria-valuenow="<?php echo round($total, 2); ?>" 
+aria-valuemin="0" aria-valuemax="<?php echo round($total_loan, 2); ?>">
+<span class="sr-only"><?php echo round($percentage, 1); ?>% Complete</span>
 </div>
 </div>
 </div>

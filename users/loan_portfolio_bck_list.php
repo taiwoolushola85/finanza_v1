@@ -231,8 +231,8 @@ $(document).ready(function() {
         e.stopImmediatePropagation(); // Stops the click from triggering other scripts
 
         const id = $(this).data('id');
-        const $modal = $("#updateModals");
-        const $profileContainer = $('#profi');
+        const $modal = $("#updateModal");
+        const $profileContainer = $('#pageloader');
 
         // 2. Open the modal immediately
         $modal.modal('show');
